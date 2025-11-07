@@ -1,0 +1,114 @@
+{% comment %} Get the number of days to show from plugin settings and convert to number {% endcomment %}
+{% assign days_to_show = trmnl.plugin_settings.custom_fields_values.days_to_show | default: 30 | plus: 0 %}
+{% assign include_prereleases = trmnl.plugin_settings.custom_fields_values.include_prereleasess| default: "no" %}
+{% assign include_drafts = trmnl.plugin_settings.custom_fields_values.included_drafs| default: "no" %}
+
+{% comment %} Configuration {% endcomment %}
+{% assign items_per_column = 3 %}
+{% assign number_of_columns = 2 %}
+
+{% comment %} Combine all release arrays into one master array {% endcomment %}
+{% assign all_releases = "" | split: "" %}
+{% assign owner_repos_list = trmnl.plugin_settings.custom_fields_values.owner_repos | split: "," %}
+{% for i in (0..owner_repos_list.size) %}
+{% assign release_array_name = "IDX_" | append: i %}
+{% assign release_array = [release_array_name] %}
+{% if release_array and release_array.data %}
+{% assign all_releases = all_releases | concat: release_array.data %}
+{% endif %}
+{% endfor %}
+
+{% comment %} Filter releases by date, drafts, and prereleases {% endcomment %}
+{% assign filtered_releases = "" | split: "" %}
+{% assign current_timestamp_seconds = trmnl.system.timestamp_utc %}
+{% assign seconds_in_days = 86400 | times: days_to_show %}
+{% assign cutoff_timestamp_seconds = current_timestamp_seconds | minus: seconds_in_days %}
+
+{% for release in all_releases %}
+{% assign should_include = true %}
+
+{% comment %} Check date filter {% endcomment %}
+{% if days_to_show > 0 %}
+{% assign release_timestamp = release.published_at | date: "%s" | times: 1 %}
+{% if release_timestamp < cutoff_timestamp_seconds %}
+                          {% assign should_include = false %}
+                          {% endif %}
+                          {% endif %}
+
+                          {% comment %} Check draft filter {% endcomment %}
+                          {% if include_drafts == "no" and release.draft == true %}
+                          {% assign should_include = false %}
+                          {% endif %}
+
+                          {% comment %} Check prerelease filter {% endcomment %}
+                          {% if include_prereleases == "no" and release.prerelease == true %}
+                          {% assign should_include = false %}
+                          {% endif %}
+
+                          {% comment %} Add to filtered array if it passes all filters {% endcomment %}
+                          {% if should_include == true %}
+                          {% assign temp_array = all_releases | slice: forloop.index0, 1 %}
+                          {% assign filtered_releases = filtered_releases | concat: temp_array %}
+                          {% endif %}
+                          {% endfor %}
+
+                          {% comment %} Sort releases by published date (newest first) {% endcomment %}
+                          {% assign sorted_releases = filtered_releases | sort: "published_at" | reverse %}
+
+  {% comment %} Calculate total items to display {% endcomment %}
+  {% assign total_items = items_per_column | times: number_of_columns %}
+  {% assign top_releases = sorted_releases | slice: 0, total_items %}
+
+  {% comment %} Display the releases in HTML {% endcomment %}
+  <div class="layout">
+    <div class="columns">
+      {% assign column_limit = number_of_columns | minus: 1 %}
+      {% for i in (0..column_limit) %}
+      <div class="column">
+        <div class="layout layout--top layout--left">
+
+          <div class="flex flex--col">
+            {% assign start_index = i | times: items_per_column %}
+            {% for release in top_releases offset: start_index limit: items_per_column %}
+            {% assign current_index = forloop.index | plus: start_index %}
+            <div class="item item--emphasis-{{ current_index | modulo: 3 | plus: 1 }}">
+              <div class="meta"></div>
+              <div class="content">
+                {% comment %} Extract project name from repository URL {% endcomment %}
+                {% assign repo_url_parts = release.html_url | split: '/' %}
+                {% assign project_name = repo_url_parts[3] | append: '/' | append: repo_url_parts[4] %}
+                <div class="title title--small">{{ project_name }}</div>
+                <div class="label label--inverted" data-clamp="2">{{ release.name }}</div>
+                <div class="description">
+                  {% if release.prerelease %}Pre-release {% endif %}
+                  {% if release.draft %}Draft {% endif %}
+                  {% assign total_downloads = 0 %}
+                  {% for asset in release.assets %}
+                  {% assign total_downloads = total_downloads | plus: asset.download_count %}
+                  {% endfor %}
+                  {% comment %}⬇️ {{ total_downloads }} • {% endcomment %}
+                  {{ release.published_at | l_date: '%-d %b %Y' }}
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% if top_releases.size == 0 %}
+  <div class="layout">
+    <div class="content">
+      <div class="description">
+        {% if days_to_show > 0 %}
+        No github releases found for the selected time period ({{ days_to_show }} days).
+        {% else %}
+        No releases found.
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}

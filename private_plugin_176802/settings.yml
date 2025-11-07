@@ -1,0 +1,44 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: "{% assign owner_repos_list = owner_repos | split: \",\" %}\r\n{% for owner_repo in owner_repos_list %}https://api.github.com/repos/{{ owner_repo }}/releases\r\n{% endfor %}"
+polling_headers: ''
+polling_body: ''
+id: 176802
+custom_fields:
+- keyname: about
+  name: About This Plugin
+  field_type: author_bio
+  description: 'Show the latest github releases<br />Options: <br /> ● Amount of days to show releases<br /> ● Include Pre-Releases<br /> ● Include Draft releases<br /> '
+  github_url: https://github.com/ExcuseMi/trmnl-github-releases-plugin
+- keyname: owner_repos
+  field_type: multi_string
+  name: Github repositories
+  description: 'List of github ''owner/repository'' combinations to identify the github repositories you want to monitor.<br />Format: ''owner/repository''<br />Example: LoveRetro/NextUI'
+  placeholder: owner/repository
+- keyname: days_to_show
+  field_type: number
+  placeholder: '7'
+  name: Amount of days to show releases
+  description: Filter releases to those published within the last specified number of days.<br /><i>0 or negative values show all releases</i>
+- keyname: include_prereleases
+  field_type: select
+  name: Include Pre-Releases
+  description: Allow Pre-Releases to be shown
+  options:
+  - true
+  - false
+  default: 'no'
+- keyname: include_drafts
+  field_type: select
+  name: Include Drafts
+  description: Allow Drafts to be shown
+  options:
+  - true
+  - false
+  default: 'no'
+name: Github Releases
+refresh_interval: 15
