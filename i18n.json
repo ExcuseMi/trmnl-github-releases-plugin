@@ -1,0 +1,191 @@
+{
+  "en": {
+    "github_releases": "GitHub Releases",
+    "last": "Last",
+    "days": "days",
+    "day": "day",
+    "all_releases": "All releases",
+    "no_releases_found": "No releases found.",
+    "no_releases_found_time": "No GitHub releases found for the selected time period"
+  },
+  "nl": {
+    "github_releases": "GitHub Releases",
+    "last": "Laatste",
+    "days": "dagen",
+    "day": "dag",
+    "all_releases": "Alle releases",
+    "no_releases_found": "Geen releases gevonden.",
+    "no_releases_found_time": "Geen GitHub releases gevonden voor de geselecteerde periode"
+  },
+  "fr": {
+    "github_releases": "Versions GitHub",
+    "last": "Derniers",
+    "days": "jours",
+    "day": "jour",
+    "all_releases": "Toutes les versions",
+    "no_releases_found": "Aucune version trouvée.",
+    "no_releases_found_time": "Aucune version GitHub trouvée pour la période sélectionnée"
+  },
+  "de": {
+    "github_releases": "GitHub-Releases",
+    "last": "Letzte",
+    "days": "Tage",
+    "day": "Tag",
+    "all_releases": "Alle Releases",
+    "no_releases_found": "Keine Releases gefunden.",
+    "no_releases_found_time": "Keine GitHub-Releases für den ausgewählten Zeitraum gefunden"
+  },
+  "es": {
+    "github_releases": "Lanzamientos de GitHub",
+    "last": "Últimos",
+    "days": "días",
+    "day": "día",
+    "all_releases": "Todos los lanzamientos",
+    "no_releases_found": "No se encontraron lanzamientos.",
+    "no_releases_found_time": "No se encontraron lanzamientos de GitHub para el período seleccionado"
+  },
+  "it": {
+    "github_releases": "Release di GitHub",
+    "last": "Ultimi",
+    "days": "giorni",
+    "day": "giorno",
+    "all_releases": "Tutte le release",
+    "no_releases_found": "Nessuna release trovata.",
+    "no_releases_found_time": "Nessuna release di GitHub trovata per il periodo selezionato"
+  },
+  "pt": {
+    "github_releases": "Lançamentos do GitHub",
+    "last": "Últimos",
+    "days": "dias",
+    "day": "dia",
+    "all_releases": "Todos os lançamentos",
+    "no_releases_found": "Nenhum lançamento encontrado.",
+    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado"
+  },
+  "pt-BR": {
+    "github_releases": "Lançamentos do GitHub",
+    "last": "Últimos",
+    "days": "dias",
+    "day": "dia",
+    "all_releases": "Todos os lançamentos",
+    "no_releases_found": "Nenhum lançamento encontrado.",
+    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado"
+  },
+  "ru": {
+    "github_releases": "Релизы GitHub",
+    "last": "Последние",
+    "days": "дней",
+    "day": "день",
+    "all_releases": "Все релизы",
+    "no_releases_found": "Релизы не найдены.",
+    "no_releases_found_time": "Релизы GitHub не найдены за выбранный период"
+  },
+  "ja": {
+    "github_releases": "GitHubリリース",
+    "last": "最新",
+    "days": "日間",
+    "day": "日",
+    "all_releases": "すべてのリリース",
+    "no_releases_found": "リリースが見つかりません。",
+    "no_releases_found_time": "選択した期間のGitHubリリースが見つかりません"
+  },
+  "zh-CN": {
+    "github_releases": "GitHub 发布",
+    "last": "最近",
+    "days": "天",
+    "day": "天",
+    "all_releases": "所有发布",
+    "no_releases_found": "未找到发布。",
+    "no_releases_found_time": "所选时间段内未找到 GitHub 发布"
+  },
+  "zh-TW": {
+    "github_releases": "GitHub 發布",
+    "last": "最近",
+    "days": "天",
+    "day": "天",
+    "all_releases": "所有發布",
+    "no_releases_found": "未找到發布。",
+    "no_releases_found_time": "所選時間段內未找到 GitHub 發布"
+  },
+  "ko": {
+    "github_releases": "GitHub 릴리스",
+    "last": "최근",
+    "days": "일",
+    "day": "일",
+    "all_releases": "모든 릴리스",
+    "no_releases_found": "릴리스를 찾을 수 없습니다.",
+    "no_releases_found_time": "선택한 기간 동안 GitHub 릴리스를 찾을 수 없습니다"
+  },
+  "ar": {
+    "github_releases": "إصدارات GitHub",
+    "last": "آخر",
+    "days": "أيام",
+    "day": "يوم",
+    "all_releases": "جميع الإصدارات",
+    "no_releases_found": "لم يتم العثور على إصدارات.",
+    "no_releases_found_time": "لم يتم العثور على إصدارات GitHub للفترة المحددة"
+  },
+  "tr": {
+    "github_releases": "GitHub Sürümleri",
+    "last": "Son",
+    "days": "gün",
+    "day": "gün",
+    "all_releases": "Tüm sürümler",
+    "no_releases_found": "Sürüm bulunamadı.",
+    "no_releases_found_time": "Seçilen zaman dilimi için GitHub sürümü bulunamadı"
+  },
+  "sv": {
+    "github_releases": "GitHub-versioner",
+    "last": "Senaste",
+    "days": "dagar",
+    "day": "dag",
+    "all_releases": "Alla versioner",
+    "no_releases_found": "Inga versioner hittades.",
+    "no_releases_found_time": "Inga GitHub-versioner hittades för den valda tidsperioden"
+  },
+  "pl": {
+    "github_releases": "Wydania GitHub",
+    "last": "Ostatnie",
+    "days": "dni",
+    "day": "dzień",
+    "all_releases": "Wszystkie wydania",
+    "no_releases_found": "Nie znaleziono wydań.",
+    "no_releases_found_time": "Nie znaleziono wydań GitHub dla wybranego okresu"
+  },
+  "hi": {
+    "github_releases": "GitHub रिलीज़",
+    "last": "पिछले",
+    "days": "दिन",
+    "day": "दिन",
+    "all_releases": "सभी रिलीज़",
+    "no_releases_found": "कोई रिलीज़ नहीं मिली।",
+    "no_releases_found_time": "चयनित अवधि के लिए कोई GitHub रिलीज़ नहीं मिली"
+  },
+  "cs": {
+    "github_releases": "Vydání GitHub",
+    "last": "Posledních",
+    "days": "dní",
+    "day": "den",
+    "all_releases": "Všechna vydání",
+    "no_releases_found": "Nebyla nalezena žádná vydání.",
+    "no_releases_found_time": "Pro vybrané časové období nebyla nalezena žádná vydání GitHub"
+  },
+  "da": {
+    "github_releases": "GitHub-udgivelser",
+    "last": "Seneste",
+    "days": "dage",
+    "day": "dag",
+    "all_releases": "Alle udgivelser",
+    "no_releases_found": "Ingen udgivelser fundet.",
+    "no_releases_found_time": "Ingen GitHub-udgivelser fundet for den valgte periode"
+  },
+  "fi": {
+    "github_releases": "GitHub-julkaisut",
+    "last": "Viimeiset",
+    "days": "päivää",
+    "day": "päivä",
+    "all_releases": "Kaikki julkaisut",
+    "no_releases_found": "Julkaisuja ei löytynyt.",
+    "no_releases_found_time": "GitHub-julkaisuja ei löytynyt valitulta ajanjaksolta"
+  }
+}
