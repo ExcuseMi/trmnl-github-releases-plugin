@@ -1,0 +1,119 @@
+{% comment %} Get the number of days to show from plugin settings and convert to number {% endcomment %}
+{% assign days_to_show = trmnl.plugin_settings.custom_fields_values.days_to_show | plus: 0 %}
+{% assign include_prereleases = trmnl.plugin_settings.custom_fields_values.include_prereleasess| default: "no" %}
+{% assign include_drafts = trmnl.plugin_settings.custom_fields_values.included_drafs| default: "no" %}
+{% assign only_show_latest = trmnl.plugin_settings.custom_fields_values.only_show_latest | default: "no" %}
+
+{% comment %} Configuration {% endcomment %}
+{% assign items_per_column = 6 %}
+{% assign number_of_columns = 2 %}
+
+{% comment %} Load translations from IDX_0 {% endcomment %}
+{% assign all_translations = IDX_0 %}
+{% if trmnl.user.id == 6458 %}
+  {% assign user_locale = "en" %}
+{% else %}
+  {% comment %} Use user's locale or default to "en" {% endcomment %}
+  {% assign user_locale = trmnl.user.locale | default: "en" %}
+{% endif %}
+
+{% if user_locale contains "_" %}
+  {% assign user_locale = user_locale | split: "_" | first %}
+{% endif %}
+{% assign translations = all_translations[user_locale] %}
+{% unless translations %}
+  {% assign translations = all_translations["en"] %}
+{% endunless %}
+
+{% comment %} Combine all release arrays into one master array {% endcomment %}
+{% assign all_releases = "" | split: "" %}
+{% assign owner_repos_list = trmnl.plugin_settings.custom_fields_values.owner_repos | split: "," %}
+{% assign element_count = owner_repos_list.size | plus: 1 %}
+{% for i in (1..element_count) %}
+  {% assign idx = i | plus: 0 %}
+  {% assign release_array_name = "IDX_" | append: idx %}
+  {% assign release_array = [release_array_name] %}
+  {% if release_array and release_array.data %}
+    {% if only_show_latest != "no" %}
+      {% comment %} Filter this repo's releases first, then take the latest valid one {% endcomment %}
+      {% assign repo_filtered = "" | split: "" %}
+      {% for release in release_array.data %}
+        {% assign should_include = true %}
+        
+        {% comment %} Check draft filter {% endcomment %}
+        {% if include_drafts == "no" and release.draft == true %}
+          {% assign should_include = false %}
+        {% endif %}
+        
+        {% comment %} Check prerelease filter {% endcomment %}
+        {% if include_prereleases == "no" and release.prerelease == true %}
+          {% assign should_include = false %}
+        {% endif %}
+        
+        {% if should_include == true %}
+          {% assign temp_array = release_array.data | slice: forloop.index0, 1 %}
+          {% assign repo_filtered = repo_filtered | concat: temp_array %}
+        {% endif %}
+      {% endfor %}
+      
+      {% comment %} Take only the first (latest) valid release from this repo {% endcomment %}
+      {% assign repo_releases = repo_filtered | slice: 0, 1 %}
+      {% assign all_releases = all_releases | concat: repo_releases %}
+    {% else %}
+      {% assign all_releases = all_releases | concat: release_array.data %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Filter releases by date {% endcomment %}
+{% assign filtered_releases = "" | split: "" %}
+{% assign current_timestamp_seconds = trmnl.system.timestamp_utc %}
+{% assign seconds_in_days = 86400 | times: days_to_show %}
+{% assign cutoff_timestamp_seconds = current_timestamp_seconds | minus: seconds_in_days %}
+
+{% for release in all_releases %}
+  {% assign should_include = true %}
+  
+  {% comment %} Check date filter {% endcomment %}
+  {% if days_to_show > 0 %}
+    {% assign release_timestamp = release.published_at | date: "%s" | times: 1 %}
+    {% if release_timestamp < cutoff_timestamp_seconds %}
+      {% assign should_include = false %}
+    {% endif %}
+  {% endif %}
+  
+  {% comment %} If only_show_latest is disabled, apply draft/prerelease filters here {% endcomment %}
+  {% if only_show_latest == "no" %}
+    {% comment %} Check draft filter {% endcomment %}
+    {% if include_drafts == "no" and release.draft == true %}
+      {% assign should_include = false %}
+    {% endif %}
+    
+    {% comment %} Check prerelease filter {% endcomment %}
+    {% if include_prereleases == "no" and release.prerelease == true %}
+      {% assign should_include = false %}
+    {% endif %}
+  {% endif %}
+  
+  {% comment %} Add to filtered array if it passes all filters {% endcomment %}
+  {% if should_include == true %}
+    {% assign temp_array = all_releases | slice: forloop.index0, 1 %}
+    {% assign filtered_releases = filtered_releases | concat: temp_array %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Sort releases by published date (newest first) {% endcomment %}
+{% assign sorted_releases = filtered_releases | sort: "published_at" | reverse %}
+
+{% comment %} Calculate total items to display {% endcomment %}
+{% assign total_items = items_per_column | times: number_of_columns %}
+{% assign top_releases = sorted_releases | slice: 0, total_items %}
+
+{% comment %} Assign translation variables {% endcomment %}
+{% assign t_github_releases = translations.github_releases %}
+{% assign t_last = translations.last %}
+{% assign t_days = translations.days %}
+{% assign t_day = translations.day %}
+{% assign t_all_releases = translations.all_releases %}
+{% assign t_no_releases_found = translations.no_releases_found %}
+{% assign t_no_releases_found_time = translations.no_releases_found_time %}

@@ -4,7 +4,7 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "{% assign owner_repos_list = owner_repos | split: \",\" %}\r\n{% for owner_repo in owner_repos_list %}https://api.github.com/repos/{{ owner_repo }}/releases\r\n{% endfor %}"
+polling_url: "https://raw.githubusercontent.com/ExcuseMi/trmnl-github-releases-plugin/refs/heads/main/i18n.json\r\n\r\n{% assign owner_repos_list = owner_repos | split: \",\" %}\r\n{% for owner_repo in owner_repos_list %}https://api.github.com/repos/{{ owner_repo }}/releases\r\n{% endfor %}"
 polling_headers: ''
 polling_body: ''
 id: 176802
@@ -12,33 +12,43 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Show the latest github releases<br />Options: <br /> ● Amount of days to show releases<br /> ● Include Pre-Releases<br /> ● Include Draft releases<br /> '
+  description: Display the latest GitHub releases from your monitored repositories with powerful filtering options.<br /><br /> <strong>Features:</strong><br /> ● Filter by time period (show releases from last N days)<br /> ● Include or exclude pre-releases<br /> ● Include or exclude draft releases<br /> ● Show only the latest release per repository<br /> ● Multi-language support
   github_url: https://github.com/ExcuseMi/trmnl-github-releases-plugin
 - keyname: owner_repos
   field_type: multi_string
-  name: Github repositories
-  description: 'List of github ''owner/repository'' combinations to identify the github repositories you want to monitor.<br />Format: ''owner/repository''<br />Example: LoveRetro/NextUI'
+  name: GitHub Repositories
+  description: List of GitHub repositories to monitor.<br /><br /> <strong>Format:</strong> owner/repository<br /> <strong>Example:</strong> LoveRetro/NextUI<br /><br /> The plugin will fetch release data for all listed repositories and display them in a unified view.
   placeholder: owner/repository
 - keyname: days_to_show
   field_type: number
-  placeholder: '7'
-  name: Amount of days to show releases
-  description: Filter releases to those published within the last specified number of days.<br /><i>0 or negative values show all releases</i>
+  placeholder: '31'
+  name: Days to Show
+  description: Filter releases published within the last specified number of days.<br /><br /> <strong>Examples:</strong><br /> ● 7 = Last week's releases<br /> ● 31 = Last month's releases<br /> ● empty, 0 or negative = All releases (no time filter)<br /><br /> This filter is applied after draft and pre-release filters.
+  optional: true
 - keyname: include_prereleases
   field_type: select
   name: Include Pre-Releases
-  description: Allow Pre-Releases to be shown
+  description: Determine whether to show pre-release versions.<br /><br /> Pre-releases are typically beta, alpha, or release candidate versions that are not yet considered stable.<br /><br /> <strong>Yes:</strong> Show all releases including pre-releases<br /> <strong>No:</strong> Show only stable releases
   options:
-  - true
-  - false
-  default: 'no'
+  - 'Yes'
+  - 'No'
+  default: 'No'
 - keyname: include_drafts
   field_type: select
-  name: Include Drafts
-  description: Allow Drafts to be shown
+  name: Include Draft Releases
+  description: Determine whether to show draft releases.<br /><br /> Draft releases are unpublished and typically only visible to repository maintainers. They may not be finalized.<br /><br /> <strong>Yes:</strong> Show draft releases<br /> <strong>No:</strong> Show only published releases
   options:
-  - true
-  - false
-  default: 'no'
+  - 'Yes'
+  - 'No'
+  default: 'No'
+- keyname: only_show_latest
+  field_type: select
+  name: Latest Release Only
+  description: Show only the most recent release from each repository.<br /><br /> When enabled, this filter is applied <strong>before</strong> the time filter, ensuring you see the latest <em>valid</em> release (respecting draft and pre-release settings) from each repository.<br /><br /> <strong>Example:</strong> If the latest release is a draft and drafts are excluded, the plugin will show the next most recent non-draft release.<br /><br /> <strong>Yes:</strong> One release per repository<br /> <strong>No:</strong> All matching releases
+  options:
+  - 'Yes'
+  - 'No'
+  default: 'No'
+  optional: true
 name: Github Releases
 refresh_interval: 15
