@@ -89,7 +89,7 @@
     "no_releases_found": "リリースが見つかりません。",
     "no_releases_found_time": "選択した期間のGitHubリリースが見つかりません"
   },
-  "zh-CN": {
+  "zh": {
     "github_releases": "GitHub 发布",
     "last": "最近",
     "days": "天",
@@ -97,15 +97,6 @@
     "all_releases": "所有发布",
     "no_releases_found": "未找到发布。",
     "no_releases_found_time": "所选时间段内未找到 GitHub 发布"
-  },
-  "zh-TW": {
-    "github_releases": "GitHub 發布",
-    "last": "最近",
-    "days": "天",
-    "day": "天",
-    "all_releases": "所有發布",
-    "no_releases_found": "未找到發布。",
-    "no_releases_found_time": "所選時間段內未找到 GitHub 發布"
   },
   "ko": {
     "github_releases": "GitHub 릴리스",
