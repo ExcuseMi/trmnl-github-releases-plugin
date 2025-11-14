@@ -6,8 +6,22 @@
     "day": "day",
     "all_releases": "All releases",
     "no_releases_found": "No releases found.",
-    "no_releases_found_time": "No GitHub releases found for the selected time period"
+    "no_releases_found_time": "No GitHub releases found for the selected time period",
+    "since_previous": "since previous",
+    "time_same_day": "same day",
+    "time_minute": "minute",
+    "time_minutes": "minutes",
+    "time_hour": "hour",
+    "time_hours": "hours",
+    "time_day_unit": "day",
+    "time_days_unit": "days",
+    "time_month": "month",
+    "time_months": "months",
+    "time_year": "year",
+    "time_years": "years",
+    "time_later": "later"
   },
+
   "nl": {
     "github_releases": "GitHub Releases",
     "last": "Laatste",
@@ -15,8 +29,22 @@
     "day": "dag",
     "all_releases": "Alle releases",
     "no_releases_found": "Geen releases gevonden.",
-    "no_releases_found_time": "Geen GitHub releases gevonden voor de geselecteerde periode"
+    "no_releases_found_time": "Geen GitHub releases gevonden voor de geselecteerde periode",
+    "since_previous": "sinds vorige",
+    "time_same_day": "dezelfde dag",
+    "time_minute": "minuut",
+    "time_minutes": "minuten",
+    "time_hour": "uur",
+    "time_hours": "uur",
+    "time_day_unit": "dag",
+    "time_days_unit": "dagen",
+    "time_month": "maand",
+    "time_months": "maanden",
+    "time_year": "jaar",
+    "time_years": "jaar",
+    "time_later": "later"
   },
+
   "fr": {
     "github_releases": "Versions GitHub",
     "last": "Derniers",
@@ -24,8 +52,22 @@
     "day": "jour",
     "all_releases": "Toutes les versions",
     "no_releases_found": "Aucune version trouvée.",
-    "no_releases_found_time": "Aucune version GitHub trouvée pour la période sélectionnée"
+    "no_releases_found_time": "Aucune version GitHub trouvée pour la période sélectionnée",
+    "since_previous": "depuis la précédente",
+    "time_same_day": "le même jour",
+    "time_minute": "minute",
+    "time_minutes": "minutes",
+    "time_hour": "heure",
+    "time_hours": "heures",
+    "time_day_unit": "jour",
+    "time_days_unit": "jours",
+    "time_month": "mois",
+    "time_months": "mois",
+    "time_year": "an",
+    "time_years": "ans",
+    "time_later": "plus tard"
   },
+
   "de": {
     "github_releases": "GitHub-Releases",
     "last": "Letzte",
@@ -33,8 +75,22 @@
     "day": "Tag",
     "all_releases": "Alle Releases",
     "no_releases_found": "Keine Releases gefunden.",
-    "no_releases_found_time": "Keine GitHub-Releases für den ausgewählten Zeitraum gefunden"
+    "no_releases_found_time": "Keine GitHub-Releases für den ausgewählten Zeitraum gefunden",
+    "since_previous": "seit vorheriger",
+    "time_same_day": "am selben Tag",
+    "time_minute": "Minute",
+    "time_minutes": "Minuten",
+    "time_hour": "Stunde",
+    "time_hours": "Stunden",
+    "time_day_unit": "Tag",
+    "time_days_unit": "Tage",
+    "time_month": "Monat",
+    "time_months": "Monate",
+    "time_year": "Jahr",
+    "time_years": "Jahre",
+    "time_later": "später"
   },
+
   "es": {
     "github_releases": "Lanzamientos de GitHub",
     "last": "Últimos",
@@ -42,8 +98,22 @@
     "day": "día",
     "all_releases": "Todos los lanzamientos",
     "no_releases_found": "No se encontraron lanzamientos.",
-    "no_releases_found_time": "No se encontraron lanzamientos de GitHub para el período seleccionado"
+    "no_releases_found_time": "No se encontraron lanzamientos de GitHub para el período seleccionado",
+    "since_previous": "desde anterior",
+    "time_same_day": "el mismo día",
+    "time_minute": "minuto",
+    "time_minutes": "minutos",
+    "time_hour": "hora",
+    "time_hours": "horas",
+    "time_day_unit": "día",
+    "time_days_unit": "días",
+    "time_month": "mes",
+    "time_months": "meses",
+    "time_year": "año",
+    "time_years": "años",
+    "time_later": "después"
   },
+
   "it": {
     "github_releases": "Release di GitHub",
     "last": "Ultimi",
@@ -51,8 +121,22 @@
     "day": "giorno",
     "all_releases": "Tutte le release",
     "no_releases_found": "Nessuna release trovata.",
-    "no_releases_found_time": "Nessuna release di GitHub trovata per il periodo selezionato"
+    "no_releases_found_time": "Nessuna release di GitHub trovata per il periodo selezionato",
+    "since_previous": "dalla precedente",
+    "time_same_day": "lo stesso giorno",
+    "time_minute": "minuto",
+    "time_minutes": "minuti",
+    "time_hour": "ora",
+    "time_hours": "ore",
+    "time_day_unit": "giorno",
+    "time_days_unit": "giorni",
+    "time_month": "mese",
+    "time_months": "mesi",
+    "time_year": "anno",
+    "time_years": "anni",
+    "time_later": "dopo"
   },
+
   "pt": {
     "github_releases": "Lançamentos do GitHub",
     "last": "Últimos",
@@ -60,8 +144,22 @@
     "day": "dia",
     "all_releases": "Todos os lançamentos",
     "no_releases_found": "Nenhum lançamento encontrado.",
-    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado"
+    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado",
+    "since_previous": "desde anterior",
+    "time_same_day": "no mesmo dia",
+    "time_minute": "minuto",
+    "time_minutes": "minutos",
+    "time_hour": "hora",
+    "time_hours": "horas",
+    "time_day_unit": "dia",
+    "time_days_unit": "dias",
+    "time_month": "mês",
+    "time_months": "meses",
+    "time_year": "ano",
+    "time_years": "anos",
+    "time_later": "depois"
   },
+
   "pt-BR": {
     "github_releases": "Lançamentos do GitHub",
     "last": "Últimos",
@@ -69,8 +167,22 @@
     "day": "dia",
     "all_releases": "Todos os lançamentos",
     "no_releases_found": "Nenhum lançamento encontrado.",
-    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado"
+    "no_releases_found_time": "Nenhum lançamento do GitHub encontrado para o período selecionado",
+    "since_previous": "desde anterior",
+    "time_same_day": "no mesmo dia",
+    "time_minute": "minuto",
+    "time_minutes": "minutos",
+    "time_hour": "hora",
+    "time_hours": "horas",
+    "time_day_unit": "dia",
+    "time_days_unit": "dias",
+    "time_month": "mês",
+    "time_months": "meses",
+    "time_year": "ano",
+    "time_years": "anos",
+    "time_later": "depois"
   },
+
   "ru": {
     "github_releases": "Релизы GitHub",
     "last": "Последние",
@@ -78,8 +190,22 @@
     "day": "день",
     "all_releases": "Все релизы",
     "no_releases_found": "Релизы не найдены.",
-    "no_releases_found_time": "Релизы GitHub не найдены за выбранный период"
+    "no_releases_found_time": "Релизы GitHub не найдены за выбранный период",
+    "since_previous": "с предыдущей",
+    "time_same_day": "в тот же день",
+    "time_minute": "минута",
+    "time_minutes": "минут",
+    "time_hour": "час",
+    "time_hours": "часов",
+    "time_day_unit": "день",
+    "time_days_unit": "дней",
+    "time_month": "месяц",
+    "time_months": "месяцев",
+    "time_year": "год",
+    "time_years": "лет",
+    "time_later": "спустя"
   },
+
   "ja": {
     "github_releases": "GitHubリリース",
     "last": "最新",
@@ -87,8 +213,22 @@
     "day": "日",
     "all_releases": "すべてのリリース",
     "no_releases_found": "リリースが見つかりません。",
-    "no_releases_found_time": "選択した期間のGitHubリリースが見つかりません"
+    "no_releases_found_time": "選択した期間のGitHubリリースが見つかりません",
+    "since_previous": "前回から",
+    "time_same_day": "同日",
+    "time_minute": "分",
+    "time_minutes": "分",
+    "time_hour": "時間",
+    "time_hours": "時間",
+    "time_day_unit": "日",
+    "time_days_unit": "日",
+    "time_month": "か月",
+    "time_months": "か月",
+    "time_year": "年",
+    "time_years": "年",
+    "time_later": "後"
   },
+
   "zh": {
     "github_releases": "GitHub 发布",
     "last": "最近",
@@ -96,8 +236,22 @@
     "day": "天",
     "all_releases": "所有发布",
     "no_releases_found": "未找到发布。",
-    "no_releases_found_time": "所选时间段内未找到 GitHub 发布"
+    "no_releases_found_time": "所选时间段内未找到 GitHub 发布",
+    "since_previous": "自上次",
+    "time_same_day": "同一天",
+    "time_minute": "分钟",
+    "time_minutes": "分钟",
+    "time_hour": "小时",
+    "time_hours": "小时",
+    "time_day_unit": "天",
+    "time_days_unit": "天",
+    "time_month": "个月",
+    "time_months": "个月",
+    "time_year": "年",
+    "time_years": "年",
+    "time_later": "后"
   },
+
   "ko": {
     "github_releases": "GitHub 릴리스",
     "last": "최근",
@@ -105,8 +259,22 @@
     "day": "일",
     "all_releases": "모든 릴리스",
     "no_releases_found": "릴리스를 찾을 수 없습니다.",
-    "no_releases_found_time": "선택한 기간 동안 GitHub 릴리스를 찾을 수 없습니다"
+    "no_releases_found_time": "선택한 기간 동안 GitHub 릴리스를 찾을 수 없습니다",
+    "since_previous": "이전부터",
+    "time_same_day": "같은 날",
+    "time_minute": "분",
+    "time_minutes": "분",
+    "time_hour": "시간",
+    "time_hours": "시간",
+    "time_day_unit": "일",
+    "time_days_unit": "일",
+    "time_month": "개월",
+    "time_months": "개월",
+    "time_year": "년",
+    "time_years": "년",
+    "time_later": "후"
   },
+
   "ar": {
     "github_releases": "إصدارات GitHub",
     "last": "آخر",
@@ -114,8 +282,22 @@
     "day": "يوم",
     "all_releases": "جميع الإصدارات",
     "no_releases_found": "لم يتم العثور على إصدارات.",
-    "no_releases_found_time": "لم يتم العثور على إصدارات GitHub للفترة المحددة"
+    "no_releases_found_time": "لم يتم العثور على إصدارات GitHub للفترة المحددة",
+    "since_previous": "منذ السابق",
+    "time_same_day": "نفس اليوم",
+    "time_minute": "دقيقة",
+    "time_minutes": "دقائق",
+    "time_hour": "ساعة",
+    "time_hours": "ساعات",
+    "time_day_unit": "يوم",
+    "time_days_unit": "أيام",
+    "time_month": "شهر",
+    "time_months": "أشهر",
+    "time_year": "سنة",
+    "time_years": "سنوات",
+    "time_later": "لاحقًا"
   },
+
   "tr": {
     "github_releases": "GitHub Sürümleri",
     "last": "Son",
@@ -123,8 +305,22 @@
     "day": "gün",
     "all_releases": "Tüm sürümler",
     "no_releases_found": "Sürüm bulunamadı.",
-    "no_releases_found_time": "Seçilen zaman dilimi için GitHub sürümü bulunamadı"
+    "no_releases_found_time": "Seçilen zaman dilimi için GitHub sürümü bulunamadı",
+    "since_previous": "öncekinden beri",
+    "time_same_day": "aynı gün",
+    "time_minute": "dakika",
+    "time_minutes": "dakika",
+    "time_hour": "saat",
+    "time_hours": "saat",
+    "time_day_unit": "gün",
+    "time_days_unit": "gün",
+    "time_month": "ay",
+    "time_months": "ay",
+    "time_year": "yıl",
+    "time_years": "yıl",
+    "time_later": "sonra"
   },
+
   "sv": {
     "github_releases": "GitHub-versioner",
     "last": "Senaste",
@@ -132,8 +328,22 @@
     "day": "dag",
     "all_releases": "Alla versioner",
     "no_releases_found": "Inga versioner hittades.",
-    "no_releases_found_time": "Inga GitHub-versioner hittades för den valda tidsperioden"
+    "no_releases_found_time": "Inga GitHub-versioner hittades för den valda tidsperioden",
+    "since_previous": "sedan föregående",
+    "time_same_day": "samma dag",
+    "time_minute": "minut",
+    "time_minutes": "minuter",
+    "time_hour": "timme",
+    "time_hours": "timmar",
+    "time_day_unit": "dag",
+    "time_days_unit": "dagar",
+    "time_month": "månad",
+    "time_months": "månader",
+    "time_year": "år",
+    "time_years": "år",
+    "time_later": "senare"
   },
+
   "pl": {
     "github_releases": "Wydania GitHub",
     "last": "Ostatnie",
@@ -141,8 +351,22 @@
     "day": "dzień",
     "all_releases": "Wszystkie wydania",
     "no_releases_found": "Nie znaleziono wydań.",
-    "no_releases_found_time": "Nie znaleziono wydań GitHub dla wybranego okresu"
+    "no_releases_found_time": "Nie znaleziono wydań GitHub dla wybranego okresu",
+    "since_previous": "od poprzedniego",
+    "time_same_day": "tego samego dnia",
+    "time_minute": "minuta",
+    "time_minutes": "minuty",
+    "time_hour": "godzina",
+    "time_hours": "godzin",
+    "time_day_unit": "dzień",
+    "time_days_unit": "dni",
+    "time_month": "miesiąc",
+    "time_months": "miesięcy",
+    "time_year": "rok",
+    "time_years": "lat",
+    "time_later": "później"
   },
+
   "hi": {
     "github_releases": "GitHub रिलीज़",
     "last": "पिछले",
@@ -150,8 +374,22 @@
     "day": "दिन",
     "all_releases": "सभी रिलीज़",
     "no_releases_found": "कोई रिलीज़ नहीं मिली।",
-    "no_releases_found_time": "चयनित अवधि के लिए कोई GitHub रिलीज़ नहीं मिली"
+    "no_releases_found_time": "चयनित अवधि के लिए कोई GitHub रिलीज़ नहीं मिली",
+    "since_previous": "पिछले से",
+    "time_same_day": "उसी दिन",
+    "time_minute": "मिनट",
+    "time_minutes": "मिनट",
+    "time_hour": "घंटा",
+    "time_hours": "घंटे",
+    "time_day_unit": "दिन",
+    "time_days_unit": "दिन",
+    "time_month": "महीना",
+    "time_months": "महीने",
+    "time_year": "साल",
+    "time_years": "साल",
+    "time_later": "बाद"
   },
+
   "cs": {
     "github_releases": "Vydání GitHub",
     "last": "Posledních",
@@ -159,8 +397,22 @@
     "day": "den",
     "all_releases": "Všechna vydání",
     "no_releases_found": "Nebyla nalezena žádná vydání.",
-    "no_releases_found_time": "Pro vybrané časové období nebyla nalezena žádná vydání GitHub"
+    "no_releases_found_time": "Pro vybrané časové období nebyla nalezena žádná vydání GitHub",
+    "since_previous": "od předchozího",
+    "time_same_day": "stejný den",
+    "time_minute": "minuta",
+    "time_minutes": "minut",
+    "time_hour": "hodina",
+    "time_hours": "hodin",
+    "time_day_unit": "den",
+    "time_days_unit": "dní",
+    "time_month": "měsíc",
+    "time_months": "měsíců",
+    "time_year": "rok",
+    "time_years": "let",
+    "time_later": "později"
   },
+
   "da": {
     "github_releases": "GitHub-udgivelser",
     "last": "Seneste",
@@ -168,8 +420,22 @@
     "day": "dag",
     "all_releases": "Alle udgivelser",
     "no_releases_found": "Ingen udgivelser fundet.",
-    "no_releases_found_time": "Ingen GitHub-udgivelser fundet for den valgte periode"
+    "no_releases_found_time": "Ingen GitHub-udgivelser fundet for den valgte periode",
+    "since_previous": "siden forrige",
+    "time_same_day": "samme dag",
+    "time_minute": "minut",
+    "time_minutes": "minutter",
+    "time_hour": "time",
+    "time_hours": "timer",
+    "time_day_unit": "dag",
+    "time_days_unit": "dage",
+    "time_month": "måned",
+    "time_months": "måneder",
+    "time_year": "år",
+    "time_years": "år",
+    "time_later": "senere"
   },
+
   "fi": {
     "github_releases": "GitHub-julkaisut",
     "last": "Viimeiset",
@@ -177,6 +443,19 @@
     "day": "päivä",
     "all_releases": "Kaikki julkaisut",
     "no_releases_found": "Julkaisuja ei löytynyt.",
-    "no_releases_found_time": "GitHub-julkaisuja ei löytynyt valitulta ajanjaksolta"
+    "no_releases_found_time": "GitHub-julkaisuja ei löytynyt valitulta ajanjaksolta",
+    "since_previous": "edellisestä",
+    "time_same_day": "samana päivänä",
+    "time_minute": "minuutti",
+    "time_minutes": "minuuttia",
+    "time_hour": "tunti",
+    "time_hours": "tuntia",
+    "time_day_unit": "päivä",
+    "time_days_unit": "päivää",
+    "time_month": "kuukausi",
+    "time_months": "kuukautta",
+    "time_year": "vuosi",
+    "time_years": "vuotta",
+    "time_later": "myöhemmin"
   }
 }
