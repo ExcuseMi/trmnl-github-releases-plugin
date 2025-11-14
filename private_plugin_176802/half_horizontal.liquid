@@ -28,6 +28,19 @@
                 {% endfor %}
                 {% comment %}⬇️ {{ total_downloads }} • {% endcomment %}
                 {{ release.published_at | l_date: '%-d %b %Y' }}
+                {% comment %} Look up time since previous release {% endcomment %}
+                {% assign release_id_str = release.id | append: "" %}
+                {% assign seconds_since_previous = nil %}
+                {% for entry in time_since_map %}
+                  {% assign parts = entry | split: ":" %}
+                  {% if parts[0] == release_id_str %}
+                    {% assign seconds_since_previous = parts[1] | plus: 0 %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {% if show_time_delta != "no" and seconds_since_previous %}
+                <span class="time-delta" data-seconds="{{ seconds_since_previous }}"></span>
+                {% endif %}
 
               </div>
             </div>
