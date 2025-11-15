@@ -294,55 +294,89 @@
         {% assign t_no_releases_found = translations.no_releases_found %}
         {% assign t_no_releases_found_time = translations.no_releases_found_time %}
         {% assign t_since_previous = translations.since_previous %}
-<script>
-  (function() {
-  function formatTimeDelta() {
-    const locale = '{{ user_locale }}';
-    const sincePrevious = '{{ t_since_previous }}' || 'since previous';
-    
-    document.querySelectorAll('.time-delta').forEach(el => {
-      const seconds = parseInt(el.dataset.seconds);
-      if (!seconds) return;
-      
-      const minutes = Math.floor(seconds / 60);
-      const hours = Math.floor(seconds / 3600);
-      const days = Math.floor(seconds / 86400);
-      const months = Math.floor(days / 30);
-      const years = Math.floor(days / 365);
-      
-      let formatted;
-      let unit;
-      
-      if (years > 0) {
-        formatted = years;
-        unit = years === 1 ? 'year' : 'years';
-      } else if (months > 0) {
-        formatted = months;
-        unit = months === 1 ? 'month' : 'months';
-      } else if (days > 0) {
-        formatted = days;
-        unit = days === 1 ? 'day' : 'days';
-      } else if (hours > 0) {
-        formatted = hours;
-        unit = hours === 1 ? 'hour' : 'hours';
-      } else if (minutes > 0) {
-        formatted = minutes;
-        unit = minutes === 1 ? 'minute' : 'minutes';
-      } else {
-        formatted = '<1';
-        unit = 'minute';
-      }
-      
-      el.textContent = '(+' + formatted + ' ' + unit + ')';
-    });
-  }
-  
-  // Run immediately
-  formatTimeDelta();
-  
-  // Also run when DOM is ready (in case script runs before elements exist)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', formatTimeDelta);
-  }
-})();
-</script>
+
+
+        {% template release_template %}
+        <div class="item item--emphasis-{{ current_index | modulo: 3 | plus: 1 }}">
+          <div class="meta"></div>
+          <div class="content">
+            {% comment %} Extract project name from repository URL {% endcomment %}
+            {% assign repo_url_parts = release.html_url | split: '/' %}
+            {% assign project_name = repo_url_parts[3] | append: '/' | append: repo_url_parts[4] %}
+            <div class="title title--small">{{ project_name }}</div>
+            <div class="label label--inverted" data-clamp="2">{{ release.name }}</div>
+            <div class="description">
+              {% if release.prerelease %}Pre-release {% endif %}
+              {% if release.draft %}Draft {% endif %}
+              {% assign total_downloads = 0 %}
+              {{ release.published_at | l_date: '%-d %b %Y' }}
+              {% comment %} Look up time since previous release {% endcomment %}
+              {% assign release_id_str = release.id | append: "" %}
+              {% assign seconds_since_previous = nil %}
+              {% for entry in time_since_map %}
+              {% assign parts = entry | split: ":" %}
+              {% if parts[0] == release_id_str %}
+              {% assign seconds_since_previous = parts[1] | plus: 0 %}
+              {% break %}
+              {% endif %}
+              {% endfor %}
+              {% if show_time_delta != "no" and seconds_since_previous %}
+              <span class="time-delta" data-seconds="{{ seconds_since_previous }}"></span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% endtemplate %}
+        <script>
+          (function() {
+            function formatTimeDelta() {
+              const locale = '{{ user_locale }}';
+              const sincePrevious = '{{ t_since_previous }}' || 'since previous';
+
+              document.querySelectorAll('.time-delta').forEach(el => {
+                const seconds = parseInt(el.dataset.seconds);
+                if (!seconds) return;
+
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(seconds / 3600);
+                const days = Math.floor(seconds / 86400);
+                const months = Math.floor(days / 30);
+                const years = Math.floor(days / 365);
+
+                let formatted;
+                let unit;
+
+                if (years > 0) {
+                  formatted = years;
+                  unit = years === 1 ? 'year' : 'years';
+                } else if (months > 0) {
+                  formatted = months;
+                  unit = months === 1 ? 'month' : 'months';
+                } else if (days > 0) {
+                  formatted = days;
+                  unit = days === 1 ? 'day' : 'days';
+                } else if (hours > 0) {
+                  formatted = hours;
+                  unit = hours === 1 ? 'hour' : 'hours';
+                } else if (minutes > 0) {
+                  formatted = minutes;
+                  unit = minutes === 1 ? 'minute' : 'minutes';
+                } else {
+                  formatted = '<1';
+                  unit = 'minute';
+                }
+
+                el.textContent = '(+' + formatted + ' ' + unit + ')';
+              });
+            }
+
+            // Run immediately
+            formatTimeDelta();
+
+            // Also run when DOM is ready (in case script runs before elements exist)
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', formatTimeDelta);
+            }
+          })();
+        </script>
