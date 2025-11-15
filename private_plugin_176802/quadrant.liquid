@@ -1,64 +1,51 @@
-{% assign items_per_column = 3 %}
-{% assign number_of_columns = 1 %}
-<div class="layout">
-  <div class="columns">
-    {% assign column_limit = number_of_columns | minus: 1 %}
-    {% for i in (0..column_limit) %}
+<div class="layout layout--stretch">
+  <div class="columns" data-overflow-cols="2" data-overflow-max-cols="2">
     <div class="column">
-      <div class="layout layout--top layout--left">
-
-        <div class="flex flex--col">
-          {% assign start_index = i | times: items_per_column %}
-          {% for release in top_releases offset: start_index limit: items_per_column %}
-          {% assign current_index = forloop.index | plus: start_index %}
-          <div class="item item--emphasis-{{ current_index | modulo: 3 | plus: 1 }}">
-            <div class="meta"></div>
-            <div class="content">
-              {% comment %} Extract project name from repository URL {% endcomment %}
-              {% assign repo_url_parts = release.html_url | split: '/' %}
-              {% assign project_name = repo_url_parts[3] | append: '/' | append: repo_url_parts[4] %}
-              <div class="title title--small">{{ project_name }}</div>
-              <div class="label label--inverted" data-clamp="2">{{ release.name }}</div>
-              <div class="description">
-                {% if release.prerelease %}Pre-release {% endif %}
-                {% if release.draft %}Draft {% endif %}
-                {% assign total_downloads = 0 %}
-                {% for asset in release.assets %}
-                {% assign total_downloads = total_downloads | plus: asset.download_count %}
-                {% endfor %}
-                {% comment %}⬇️ {{ total_downloads }} • {% endcomment %}
-                {{ release.published_at | l_date: '%-d %b %Y' }}
-                {% comment %} Look up time since previous release {% endcomment %}
-                {% assign release_id_str = release.id | append: "" %}
-                {% assign seconds_since_previous = nil %}
-                {% for entry in time_since_map %}
-                  {% assign parts = entry | split: ":" %}
-                  {% if parts[0] == release_id_str %}
-                    {% assign seconds_since_previous = parts[1] | plus: 0 %}
-                    {% break %}
-                  {% endif %}
-                {% endfor %}
-                {% if show_time_delta != "no" and seconds_since_previous %}
-                <span class="time-delta" data-seconds="{{ seconds_since_previous }}"></span>
-                {% endif %}
-
-              </div>
-            </div>
+      {% for release in top_releases %}
+      {% assign current_index = forloop.index | plus: start_index %}
+      <div class="item item--emphasis-{{ current_index | modulo: 3 | plus: 1 }}">
+        <div class="meta"></div>
+        <div class="content">
+          {% comment %} Extract project name from repository URL {% endcomment %}
+          {% assign repo_url_parts = release.html_url | split: '/' %}
+          {% assign project_name = repo_url_parts[3] | append: '/' | append: repo_url_parts[4] %}
+          <div class="title title--small">{{ project_name }}</div>
+          <div class="label label--inverted" data-clamp="2">{{ release.name }}</div>
+          <div class="description">
+            {% if release.prerelease %}Pre-release {% endif %}
+            {% if release.draft %}Draft {% endif %}
+            {% assign total_downloads = 0 %}
+            {% for asset in release.assets %}
+            {% assign total_downloads = total_downloads | plus: asset.download_count %}
+            {% endfor %}
+            {% comment %}⬇️ {{ total_downloads }} • {% endcomment %}
+            {{ release.published_at | l_date: '%-d %b %Y' }}
+            {% comment %} Look up time since previous release {% endcomment %}
+            {% assign release_id_str = release.id | append: "" %}
+            {% assign seconds_since_previous = nil %}
+            {% for entry in time_since_map %}
+            {% assign parts = entry | split: ":" %}
+            {% if parts[0] == release_id_str %}
+            {% assign seconds_since_previous = parts[1] | plus: 0 %}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+            {% if show_time_delta != "no" and seconds_since_previous %}
+            <span class="time-delta" data-seconds="{{ seconds_since_previous }}"></span>
+            {% endif %}
           </div>
-          {% endfor %}
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
-
 {% if top_releases.size == 0 %}
 <div class="layout">
   <div class="content">
     <div class="description">
       {% if days_to_show > 0 %}
-      {{t_no_releases_found_time}} ({{ days_to_show }} {{t_days}}).
+      {{t_no_releases_found_time}} ({{ days_to_show }} {{ t_days }}).
       {% else %}
       {{t_no_releases_found}}
       {% endif %}
@@ -66,3 +53,10 @@
   </div>
 </div>
 {% endif %}
+{% if show_title_bar != "no" %}
+<div class="title_bar">
+  <span class="title">{{t_github_releases}}</span>
+  <span class="instance">{% if days_to_show > 0 %}{{t_last}} {{days_to_show}} {% if days_to_show > 1 %}{{t_days}}{% else %}{{t_day}}{% endif %}{% else %} {{t_all_releases}}{% endif %} [{{top_releases.size}}]</span>
+</div>
+{% endif %}
+<script />

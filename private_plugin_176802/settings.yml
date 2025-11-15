@@ -12,7 +12,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: Display the latest GitHub releases from your monitored repositories with powerful filtering options.<br /><br /> <strong>Features:</strong><br /> ● Filter by time period (show releases from last N days)<br /> ● Include or exclude pre-releases<br /> ● Include or exclude draft releases<br /> ● Show only the latest release per repository<br /> ● Show time since previous release (release cadence tracking)<br /> ● Multi-language support
+  description: Display the latest GitHub releases from your monitored repositories with powerful filtering options.<br /><br /> <strong>Features:</strong><br /> ● Filter by time period (show releases from last N days)<br /> ● Include or exclude pre-releases<br /> ● Include or exclude draft releases<br /> ● Show only the latest release per repository<br /> ● Show time since previous release for a project<br /> ● Multi-language support<br /> ● Dynamic spacing (TRMNL X Ready)
   github_url: https://github.com/ExcuseMi/trmnl-github-releases-plugin
 - keyname: owner_repos
   field_type: multi_string
@@ -54,6 +54,15 @@ custom_fields:
   field_type: select
   name: Show Time Since Previous Release
   description: Display the time elapsed since the previous release from the same repository.<br /><br /> Shows how long it took between consecutive releases (e.g., '+8 days', '+2 months').<br /><br /> This calculation includes <strong>all</strong> releases from the repository, even those filtered out by draft/pre-release/date settings, to give you an accurate picture of the actual release cadence.<br /><br /> <strong>Yes:</strong> Show time delta next to each release date<br /> <strong>No:</strong> Show only the release date
+  options:
+  - 'Yes'
+  - 'No'
+  default: 'Yes'
+  optional: true
+- keyname: show_title_bar
+  field_type: select
+  name: Show Title bar
+  description: Display the title bar
   options:
   - 'Yes'
   - 'No'

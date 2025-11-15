@@ -4,10 +4,9 @@
 {% assign include_drafts = trmnl.plugin_settings.custom_fields_values.included_drafs| default: "no" %}
 {% assign only_show_latest = trmnl.plugin_settings.custom_fields_values.only_show_latest | default: "no" %}
 {% assign show_time_delta = trmnl.plugin_settings.custom_fields_values.show_time_delta | default: "Yes" %}
-{% comment %} Configuration {% endcomment %}
-{% assign items_per_column = 6 %}
-{% assign number_of_columns = 2 %}
+{% assign show_title_bar = trmnl.plugin_settings.custom_fields_values.show_title_bar | default: "Yes" %}
 
+{% comment %} Configuration {% endcomment %}
 {% comment %} Load translations from IDX_0 {% endcomment %}
 {% assign all_translations = IDX_0 %}
 {% if trmnl.user.id == 6458 %}
@@ -137,9 +136,7 @@
     {% assign sorted_releases = filtered_releases | sort: "published_at" | reverse %}
 
     {% comment %} Calculate total items to display {% endcomment %}
-    {% assign total_items = items_per_column | times: number_of_columns %}
-    {% assign top_releases = sorted_releases | slice: 0, total_items %}
-
+    {% assign top_releases = sorted_releases %}
     {% comment %} Assign translation variables {% endcomment %}
     {% assign t_github_releases = translations.github_releases %}
     {% assign t_last = translations.last %}
@@ -286,9 +283,7 @@
         {% comment %} Sort releases by published date (newest first) {% endcomment %}
         {% assign sorted_releases = filtered_releases | sort: "published_at" | reverse %}
 
-        {% comment %} Calculate total items to display {% endcomment %}
-        {% assign total_items = items_per_column | times: number_of_columns %}
-        {% assign top_releases = sorted_releases | slice: 0, total_items %}
+        {% assign top_releases = sorted_releases %}
 
         {% comment %} Assign translation variables {% endcomment %}
         {% assign t_github_releases = translations.github_releases %}
@@ -299,9 +294,8 @@
         {% assign t_no_releases_found = translations.no_releases_found %}
         {% assign t_no_releases_found_time = translations.no_releases_found_time %}
         {% assign t_since_previous = translations.since_previous %}
-
 <script>
-(function() {
+  (function() {
   function formatTimeDelta() {
     const locale = '{{ user_locale }}';
     const sincePrevious = '{{ t_since_previous }}' || 'since previous';
