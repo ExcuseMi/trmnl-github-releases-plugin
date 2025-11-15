@@ -1,13 +1,5 @@
-<div class="layout layout--stretch">
-  <div class="columns" data-overflow-cols="2" data-overflow-max-cols="2">
-    <div class="column">
-      {% for release in top_releases %}
-      {% assign current_index = forloop.index | plus: start_index %}
-      {% render "release_template", release: release, current_index: current_index %}
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% render "columns", top_releases:top_releases, columns: 2, max_columns:2 %}
+
 {% if top_releases.size == 0 %}
 <div class="layout">
   <div class="content">
