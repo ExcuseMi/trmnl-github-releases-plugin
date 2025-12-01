@@ -6,7 +6,7 @@ You can also report any issues with the plugin here.
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2025-11-30 06:37:37 UTC*
+*Last updated: 2025-12-01 06:41:52 UTC*
 
 
 ## <img src="assets/plugin-images/176802_icon.png" alt="Github Releases icon" width="32"/> [Github Releases](https://usetrmnl.com/recipes/176802)
