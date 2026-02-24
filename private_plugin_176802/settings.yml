@@ -5,13 +5,14 @@ dark_mode: 'no'
 static_data: ''
 polling_verb: get
 polling_url: "https://raw.githubusercontent.com/ExcuseMi/trmnl-github-releases-plugin/refs/heads/main/i18n.json\r\n\r\n{% assign owner_repos_list = owner_repos | split: \",\" %}\r\n{% for owner_repo in owner_repos_list %}https://api.github.com/repos/{{ owner_repo }}/releases\r\n{% endfor %}"
-polling_headers: ''
+polling_headers: Accept=application/vnd.github+json&X-GitHub-Api-Version=2022-11-28
 polling_body: ''
 id: 176802
 custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
+  help_text: TRMNL X Ready
   description: Display the latest GitHub releases from your monitored repositories with powerful filtering options.<br /><br /> <strong>Features:</strong><br /> ● Filter by time period (show releases from last N days)<br /> ● Include or exclude pre-releases<br /> ● Include or exclude draft releases<br /> ● Show only the latest release per repository<br /> ● Show time since previous release for a project<br /> ● Multi-language support<br /> ● Dynamic spacing (TRMNL X Ready)
   github_url: https://github.com/ExcuseMi/trmnl-github-releases-plugin
 - keyname: owner_repos
@@ -19,6 +20,15 @@ custom_fields:
   name: GitHub Repositories
   description: List of GitHub repositories to monitor.<br /><br /> <strong>Format:</strong> owner/repository<br /> <strong>Example:</strong> LoveRetro/NextUI<br /><br /> The plugin will fetch release data for all listed repositories and display them in a unified view.
   placeholder: owner/repository
+- keyname: only_show_latest
+  field_type: select
+  name: Latest Release Only
+  description: Show only the most recent release from each repository.<br /><br /> When enabled, this filter is applied <strong>before</strong> the time filter, ensuring you see the latest <em>valid</em> release (respecting draft and pre-release settings) from each repository.<br /><br /> <strong>Example:</strong> If the latest release is a draft and drafts are excluded, the plugin will show the next most recent non-draft release.<br /><br /> <strong>Yes:</strong> One release per repository<br /> <strong>No:</strong> All matching releases
+  options:
+  - 'Yes'
+  - 'No'
+  default: 'No'
+  optional: true
 - keyname: days_to_show
   field_type: number
   placeholder: '31'
@@ -41,15 +51,6 @@ custom_fields:
   - 'Yes'
   - 'No'
   default: 'No'
-- keyname: only_show_latest
-  field_type: select
-  name: Latest Release Only
-  description: Show only the most recent release from each repository.<br /><br /> When enabled, this filter is applied <strong>before</strong> the time filter, ensuring you see the latest <em>valid</em> release (respecting draft and pre-release settings) from each repository.<br /><br /> <strong>Example:</strong> If the latest release is a draft and drafts are excluded, the plugin will show the next most recent non-draft release.<br /><br /> <strong>Yes:</strong> One release per repository<br /> <strong>No:</strong> All matching releases
-  options:
-  - 'Yes'
-  - 'No'
-  default: 'No'
-  optional: true
 - keyname: show_time_delta
   field_type: select
   name: Show Time Since Previous Release

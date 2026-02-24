@@ -1,6 +1,6 @@
-{% render "columns", top_releases:top_releases, columns: 2, max_columns:2 %}
+{% render "columns", top_releases:top_releases, columns: 2, max_columns:2, max_columns_portrait:2, max_columns_lg_portrait:2 %}
 {% if top_releases.size == 0 %}
-<div class="layout">
+<div class="layout layout--stretch">
   <div class="content">
     <div class="description">
       {% if days_to_show > 0 %}
@@ -14,6 +14,7 @@
 {% endif %}
 {% if show_title_bar != "no" %}
 <div class="title_bar">
+  <img class="image" src="https://usetrmnl.com/images/plugins/github.svg" />
   <span class="title">{{t_github_releases}}</span>
   <span class="instance">{% if days_to_show > 0 %}{{t_last}} {{days_to_show}} {% if days_to_show > 1 %}{{t_days}}{% else %}{{t_day}}{% endif %}{% else %} {{t_all_releases}}{% endif %} [{{top_releases.size}}]</span>
 </div>
