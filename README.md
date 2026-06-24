@@ -6,7 +6,7 @@ You can also report any issues with the plugin here.
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-06-23 09:54:32 UTC*
+*Last updated: 2026-06-24 09:41:24 UTC*
 
 
 ## <img src="assets/plugin-images/176802_icon.png" alt="Github Releases icon" width="32"/> [Github Releases](https://usetrmnl.com/recipes/176802)
@@ -21,7 +21,7 @@ Display the latest GitHub releases from your monitored repositories with powerfu
 | Metric | Value |
 |--------|-------|
 | Installs | 2 |
-| Forks | 23 |
+| Forks | 24 |
 
 ---
 
