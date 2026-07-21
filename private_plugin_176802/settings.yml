@@ -1,11 +1,12 @@
 ---
 strategy: polling
+serverless_language: node
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "https://raw.githubusercontent.com/ExcuseMi/trmnl-github-releases-plugin/refs/heads/main/i18n.json\r\n\r\n{% assign owner_repos_list = owner_repos | split: \",\" %}\r\n{% for owner_repo in owner_repos_list %}https://api.github.com/repos/{{ owner_repo }}/releases\r\n{% endfor %}"
-polling_headers: Accept=application/vnd.github+json&X-GitHub-Api-Version=2022-11-28
+polling_url: ''
+polling_headers: ''
 polling_body: ''
 id: 176802
 custom_fields:
