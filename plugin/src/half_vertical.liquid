@@ -1,12 +1,17 @@
-{% render "columns", top_releases:top_releases, columns: 2, max_columns:2, max_columns_portrait:2, max_columns_lg_portrait:2 %}
+{% render "columns", top_releases:top_releases, show_time_delta: show_time_delta, columns: 2, max_columns:2, max_columns_portrait:2, max_columns_lg_portrait:2 %}
 {% if top_releases.size == 0 %}
 <div class="layout layout--stretch">
   <div class="content">
     <div class="description">
-      {% if days_to_show > 0 %}
+      {% if rate_limited %}
+      {{ t_rate_limited }}
+      {% elsif days_to_show > 0 %}
       {{t_no_releases_found_time}} ({{ days_to_show }} {{ t_days }}).
       {% else %}
       {{t_no_releases_found}}
+      {% endif %}
+      {% if failed_repos.size > 0 and rate_limited != true %}
+      <br>{{ t_repos_failed }}: {% for f in failed_repos %}{{ f.repo }}{% unless forloop.last %}, {% endunless %}{% endfor %}
       {% endif %}
     </div>
   </div>

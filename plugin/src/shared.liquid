@@ -1,0 +1,126 @@
+{% comment %}
+  Settings. The releases arrive filtered and sorted from transform.js
+  (top_releases), which reads owner_repos, github_token, only_show_latest,
+  days_to_show, include_prereleases and include_drafts; the template only
+  lays them out. Select values are "Yes"/"No", compared lower-cased.
+{% endcomment %}
+{% assign days_to_show = days_filter | default: 0 | plus: 0 %}
+{% assign show_time_delta = trmnl.plugin_settings.custom_fields_values.show_time_delta | default: "Yes" | downcase %}
+{% assign show_title_bar = trmnl.plugin_settings.custom_fields_values.show_title_bar | default: "Yes" | downcase %}
+{% assign top_releases = top_releases | default: empty %}
+
+{% comment %} Set user locale {% endcomment %}
+{% if trmnl.user.id == 6458 %}
+  {% assign user_locale = "en" %}
+{% else %}
+  {% assign user_locale = trmnl.user.locale | default: "en" %}
+{% endif %}
+
+{% if user_locale contains "_" %}
+  {% assign user_locale = user_locale | split: "_" | first %}
+{% endif %}
+
+{% comment %} Load translations {% endcomment %}
+{% assign translations = all_translations[user_locale] %}
+{% unless translations %}
+  {% assign translations = all_translations["en"] %}
+{% endunless %}
+
+{% comment %} Assign translation variables {% endcomment %}
+{% assign t_github_releases = translations.github_releases %}
+{% assign t_last = translations.last %}
+{% assign t_days = translations.days %}
+{% assign t_day = translations.day %}
+{% assign t_all_releases = translations.all_releases %}
+{% assign t_no_releases_found = translations.no_releases_found %}
+{% assign t_no_releases_found_time = translations.no_releases_found_time %}
+{% assign t_since_previous = translations.since_previous %}
+{% assign t_rate_limited = translations.rate_limited | default: all_translations["en"].rate_limited %}
+{% assign t_repos_failed = translations.repos_failed | default: all_translations["en"].repos_failed %}
+
+{% template release_template %}
+<div class="item item--emphasis-{{ current_index | modulo: 3 | plus: 1 }}">
+  <div class="meta"></div>
+  <div class="content">
+    <div class="title title--small lg:title--base">{{ release.repo_full_name }}</div>
+    <div class="label label--inverted lg:label--large" data-clamp="2">{{ release.name }}</div>
+    <div class="description lg:description--large">
+      {% if release.prerelease %}Pre-release {% endif %}
+      {% if release.draft %}Draft {% endif %}
+      {{ release.published_at | l_date: '%-d %b %Y' }}
+      {% if show_time_delta != "no" and release.seconds_since_previous %}
+        <span class="time-delta" data-seconds="{{ release.seconds_since_previous }}"></span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endtemplate %}
+
+{% template columns %}
+<div class="layout layout--stretch">
+  <div class="columns" data-overflow-cols="{{ columns }}" 
+    data-overflow-max-cols="{{ max_columns }}"
+    data-overflow-max-cols-portrait="{{max_columns_portrait}}"
+    data-overflow-max-cols-lg-portrait="{{max_columns_lg_portrait}}"
+
+    >
+    <div class="column">
+      {% for release in top_releases %}
+        {% assign current_index = forloop.index %}
+        {% render "release_template", release: release, current_index: current_index, show_time_delta: show_time_delta %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endtemplate %}
+
+
+<script>
+  (function() {
+    function formatTimeDelta() {
+      document.querySelectorAll('.time-delta').forEach(el => {
+        const seconds = parseInt(el.dataset.seconds);
+        if (!seconds) return;
+
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(seconds / 3600);
+        const days = Math.floor(seconds / 86400);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+
+        let formatted;
+        let unit;
+
+        if (years > 0) {
+          formatted = years;
+          unit = years === 1 ? 'year' : 'years';
+        } else if (months > 0) {
+          formatted = months;
+          unit = months === 1 ? 'month' : 'months';
+        } else if (days > 0) {
+          formatted = days;
+          unit = days === 1 ? 'day' : 'days';
+        } else if (hours > 0) {
+          formatted = hours;
+          unit = hours === 1 ? 'hour' : 'hours';
+        } else if (minutes > 0) {
+          formatted = minutes;
+          unit = minutes === 1 ? 'minute' : 'minutes';
+        } else {
+          formatted = '<1';
+          unit = 'minute';
+        }
+
+        el.textContent = '(+' + formatted + ' ' + unit + ')';
+      });
+    }
+
+    // Run immediately
+    formatTimeDelta();
+
+    // Also run when DOM is ready (in case script runs before elements exist)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', formatTimeDelta);
+    }
+  })();
+</script>

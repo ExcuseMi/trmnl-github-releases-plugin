@@ -3,6 +3,10 @@ This repository contains the plugin-data for the TRMNL Github Releases plugin.
 
 You can also report any issues with the plugin here.
 
+Developing: the plugin lives in `plugin/` and uses [trmnlp](https://github.com/usetrmnl/trmnlp). `cd plugin && trmnlp serve` to preview, `trmnlp push` to deploy, `node test/transform/run.js` for the transform tests.
+
+GitHub allows 60 requests an hour without a token, shared by everyone on TRMNL's servers. Add a fine-grained token (no permissions needed) in the plugin's **GitHub Token** setting if releases go missing.
+
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 

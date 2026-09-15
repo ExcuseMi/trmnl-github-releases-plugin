@@ -1,14 +1,35 @@
 ---
 strategy: polling
-serverless_language: node
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
+framework_version: 2.3.7
+serverless_language: node
 polling_url: ''
 polling_headers: ''
 polling_body: ''
 id: 176802
+oauth_enabled: 'false'
+oauth_pkce_enabled: 'no'
+oauth_authorize_url: ''
+oauth_token_url: ''
+oauth_scopes: ''
+oauth_scope_separator: ''
+oauth_refresh_url: ''
+oauth_auth_params: ''
+oauth_token_headers: ''
+oauth_token_site: ''
+oauth_token_params: ''
+oauth_token_request_auth_method: ''
+oauth_body_format: ''
+oauth_token_response_metadata: ''
+oauth_authorization_method: ''
+oauth_refresh_params: ''
+oauth_token_field_name: ''
+oauth_expiry_field_name: ''
+oauth_expiry_strategy: ''
+oauth_fixed_expiry_ms: ''
 custom_fields:
 - keyname: about
   name: About This Plugin
@@ -21,6 +42,11 @@ custom_fields:
   name: GitHub Repositories
   description: List of GitHub repositories to monitor.<br /><br /> <strong>Format:</strong> owner/repository<br /> <strong>Example:</strong> LoveRetro/NextUI<br /><br /> The plugin will fetch release data for all listed repositories and display them in a unified view.
   placeholder: owner/repository
+- keyname: github_token
+  field_type: password
+  name: GitHub Token
+  description: Optional. GitHub allows 60 requests an hour without a token, shared with everyone on TRMNL's servers, so releases can go missing. A <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">fine-grained token</a> with no permissions raises that to 5,000 for public repositories.
+  optional: true
 - keyname: only_show_latest
   field_type: select
   name: Latest Release Only
@@ -70,5 +96,6 @@ custom_fields:
   - 'No'
   default: 'Yes'
   optional: true
-name: Github Releases
+name: GitHub Releases
+description:
 refresh_interval: 15

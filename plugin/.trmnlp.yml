@@ -1,0 +1,19 @@
+# TRMNLP configuration
+---
+watch:
+  - .trmnlp.yml
+  - src
+
+custom_fields:
+  owner_repos: usetrmnl/trmnlp,nodejs/node,this-owner/does-not-exist
+  only_show_latest: 'No'
+  days_to_show: 60
+  include_prereleases: 'No'
+  include_drafts: 'No'
+  show_time_delta: 'Yes'
+  show_title_bar: 'Yes'
+
+variables:
+  trmnl:
+    user:
+      locale: en
