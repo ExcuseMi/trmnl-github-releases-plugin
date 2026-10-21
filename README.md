@@ -10,7 +10,7 @@ GitHub allows 60 requests an hour without a token, shared by everyone on TRMNL's
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-10-20 11:16:21 UTC*
+*Last updated: 2026-10-21 11:32:14 UTC*
 
 
 ## <img src="assets/plugin-images/176802_icon.png" alt="GitHub Releases icon" width="32"/> [GitHub Releases](https://usetrmnl.com/recipes/176802)
